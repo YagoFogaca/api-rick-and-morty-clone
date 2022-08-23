@@ -3,9 +3,9 @@ import { randomUUID } from 'node:crypto';
 export class CharacterEntity {
   constructor(character, user) {
     this.id;
-    this.user = user.userName;
+    this.user = user.username;
     this.name = character.name;
-    this.image = character.image;
+    this.imageUrl = character.imageUrl;
   }
   createId() {
     const random = randomUUID();
@@ -16,9 +16,9 @@ export class CharacterEntity {
   printCharacter() {
     return {
       id: this.id,
-      user: this.userName,
+      user: this.user,
       name: this.name,
-      image: this.image,
+      imageUrl: this.imageUrl,
     };
   }
 }

@@ -7,3 +7,11 @@ export const getAll = async () => {
   if (!getAll || getAll.length === 0) return 'Nenhum personagem foi encontrado';
   return getAll;
 };
+
+export const create = async (user) => {
+  const service = new userService();
+  const userEntity = new UserEntity(user);
+  await userEntity.createId(service.getById);
+  const newUser = userEntity.printUSer();
+  return await service.create(newUser);
+};
