@@ -1,0 +1,20 @@
+{
+    "name": "api-rick-and-morty-clone",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "node teste.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/YagoFogaca/api-rick-and-morty-clone.git"
+    },
+    "author": "Yago Fogaça",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/YagoFogaca/api-rick-and-morty-clone/issues"
+    },
+    "homepage": "https://github.com/YagoFogaca/api-rick-and-morty-clone#readme"
+}
