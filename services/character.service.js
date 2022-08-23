@@ -1,23 +1,20 @@
-export const getAllService = () => {
-    return characterDb.find();
-};
-
-export const getByIdService = (id) => {
-    return characterDb.findOnde({ id: id });
-};
-
-export const getName = (name) => {
-    return characterDb.findOnde({ name: name });
-};
-
-export const createService = (character) => {
-    return characterDb.create(character);
-};
-
-export const updateService = (id, character) => {
-    return characterDb.findOneAndUpdate({ id: id }, character, { new: true });
-};
-
-export const deleteService = (id) => {
-    return characterDb.findOneAndDelete({ id: id });
-};
+export class characterService {
+    async getAll() {
+        return await characterDb.find();
+    }
+    async getById(id) {
+        return characterDb.findOnde({ id: id });
+    }
+    async getName(name) {
+        return characterDb.findOnde({ name: name });
+    }
+    async create(character) {
+        return characterDb.create(character);
+    }
+    async updateService(id, character) {
+        return characterDb.findOneAndUpdate({ id: id }, character, { new: true });
+    }
+    async delete() {
+        return characterDb.findOneAndDelete({ id: id });
+    }
+}
