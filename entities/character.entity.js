@@ -3,15 +3,20 @@ import { randomUUID } from 'node:crypto';
 export class CharacterEntity {
   constructor(character, user) {
     this.id;
-    this.user = user.username;
+    this.user = user.username ?? '';
     this.name = character.name;
     this.imageUrl = character.imageUrl;
   }
-  createId() {
-    const random = randomUUID();
-    const idUser = random.substring(0, 7);
-    this.id = idUser;
-    return idUser;
+  async createId(getById) {
+    while (true) {
+      const random = randomUUID();
+      const idCharacter = random.substring(0, 7);
+      const getId = await getById(idCharacter);
+      if (!getId) {
+        this.id = idCharacter;
+        return idCharacter;
+      }
+    }
   }
   printCharacter() {
     return {
