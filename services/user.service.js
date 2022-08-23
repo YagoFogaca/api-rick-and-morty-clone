@@ -3,7 +3,7 @@ export const getAll = async () => {
 };
 
 export const getById = async (id) => {
-    return await userDb.findOne(id);
+    return await userDb.findOne({ id: id });
 };
 
 export const create = async (user) => {
