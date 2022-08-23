@@ -1,16 +1,16 @@
 import { characterService } from '../services/character.service.js';
 import { CharacterEntity } from '../entities/character.entity.js';
 
-export const getAll=async () => {
-  const service=new characterService();
-  const getAll=await service.getAll();
-  if (!getAll||getAll.length===0) return 'Nenhum personagem foi encontrado';
+export const getAll = async () => {
+  const service = new characterService();
+  const getAll = await service.getAll();
+  if (!getAll || getAll.length === 0) return 'Nenhum personagem foi encontrado';
   return getAll;
 };
 
-export const getById=(id) => {
-  const service=new characterService();
-  const getById=service.getById(id);
+export const getById = (id) => {
+  const service = new characterService();
+  const getById = service.getById(id);
   if (!getById) return 'Nenhum personagem foi encontrado';
   return getById;
 };
@@ -37,6 +37,8 @@ export const update=(id, character) => {
   return updateCharacter;
 }
 
-export const deleteCharacter= (id) => {
-  
+export const deleteCharacter=(id) => {
+            const service = new characterService();
+  // const delete = service.delete(id)
 }
+
