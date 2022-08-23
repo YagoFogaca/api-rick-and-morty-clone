@@ -16,5 +16,9 @@
     "bugs": {
         "url": "https://github.com/YagoFogaca/api-rick-and-morty-clone/issues"
     },
-    "homepage": "https://github.com/YagoFogaca/api-rick-and-morty-clone#readme"
+    "homepage": "https://github.com/YagoFogaca/api-rick-and-morty-clone#readme",
+    "dependencies": {
+        "dotenv": "^16.0.1",
+        "mongoose": "^6.5.2"
+    }
 }
