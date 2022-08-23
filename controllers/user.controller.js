@@ -4,7 +4,7 @@ import { UserEntity } from '../entities/user.entity.js';
 export const getAll = async () => {
   const service = new userService();
   const getAll = await service.getAll();
-  if (!getAll || getAll.length === 0) return 'Nenhum personagem foi encontrado';
+  if (!getAll || getAll.length === 0) return 'Nenhum usuario foi encontrado';
   return getAll;
 };
 

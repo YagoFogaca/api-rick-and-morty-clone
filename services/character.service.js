@@ -7,16 +7,16 @@ export class characterService {
   async getById(id) {
     return characterDb.findOne({ id: id });
   }
-  async getName(name) {
-    return characterDb.findOne({ name: name });
+  async getName(characterName) {
+    return characterDb.findOne({ name: characterName });
   }
   async create(character) {
     return characterDb.create(character);
   }
-  async updateService(id, character) {
+  async update(id, character) {
     return characterDb.findOneAndUpdate({ id: id }, character, { new: true });
   }
-  async delete() {
+  async delete(id) {
     return characterDb.findOneAndDelete({ id: id });
   }
 }
