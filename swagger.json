@@ -1,0 +1,12 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API El Geladon",
+    "description": "API para CRUD de paletas mexicanas e carrinho de compras",
+    "termsOfService": "",
+    "contact": {
+      "email": "tlima@blueedtech.com.br"
+    },
+    "version": "1.0.0"
+  }
+}
