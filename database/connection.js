@@ -1,7 +1,6 @@
 import mongo from 'mongoose';
-const { connect } = mongo;
-
 import { config } from 'dotenv';
+const { connect } = mongo;
 config();
 
 export function connectDatabase() {
