@@ -37,7 +37,7 @@ export const create = async (req, res) => {
   if (!character) {
     return res.status(400).send({ message: 'Bad Request' });
   }
-  return res.status(201).send(character);
+  return res.status(201).send({ message: 'Created' });
 };
 
 export const update = async (req, res) => {
