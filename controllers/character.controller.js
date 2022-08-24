@@ -19,7 +19,7 @@ export const getById = async (req, res) => {
   return res.status(200).send(getById);
 };
 
-export const getName = async (req, res) => {
+export const getByName = async (req, res) => {
   const service = new characterService();
   const getName = await service.getName(req.query.name);
   if (!getName || getName.length === 0) {
@@ -49,11 +49,11 @@ export const update = async (req, res) => {
   return res.status(200).send(updateCharacter);
 };
 
-export const deleteCharacter=(req, res) => {
+export const deleteCharacter = async (req, res) => {
   const service = new characterService();
-  const characterDeleted =  await service.delete(req.params.id);
-  if(!characterDeleted) {
-    return res.status(400).send({message: 'Bad request'});
+  const characterDeleted = await service.delete(req.params.id);
+  if (!characterDeleted) {
+    return res.status(400).send({ message: 'Bad request' });
   }
-  return res.status(200).send({message: 'Character deleted successfully'})
-}
+  return res.status(200).send({ message: 'Character deleted successfully' });
+};
