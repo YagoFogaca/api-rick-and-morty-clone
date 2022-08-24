@@ -10,12 +10,11 @@ export const getAll = async (req, res) => {
   return res.status(200).send(getAll);
 };
 
-export const create = async (user) => {
+export const create = async (req, res) => {
   const service = new userService();
-  const userEntity = new UserEntity(user);
+  const userEntity = new UserEntity(req.body);
   await userEntity.createId(service.getById);
-  const newUser = userEntity.printUSer();
-  const createdUser = await service.create(newUser);
+  const createdUser = await service.create(userEntity.printUSer());
   if (!createdUser) {
     return res.status(400).send({ message: 'Bad Request' });
   }
