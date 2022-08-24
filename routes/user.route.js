@@ -2,10 +2,10 @@ import { getAll, create } from '../controllers/user.controller.js';
 
 import { Router } from 'express';
 
-const router = Router();
+const routerUser = Router();
 
-router.get('/', getAll);
+routerUser.get('/', getAll);
 
-router.post('/create', create);
+routerUser.post('/create', create);
 
-export default router;
+export default routerUser;

@@ -1,7 +1,5 @@
 import mongo from 'mongoose';
-import { config } from 'dotenv';
 const { connect } = mongo;
-config();
 
 export function connectDatabase() {
   connect(process.env.BASE_URL, {
