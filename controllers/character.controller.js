@@ -2,12 +2,17 @@ import { characterService } from '../services/character.service.js';
 import { CharacterEntity } from '../entities/character.entity.js';
 
 export const getAll = async (req, res) => {
-  const service = new characterService();
-  const getAll = await service.getAll();
-  if (!getAll || getAll.length === 0) {
+  try {
+    console.log('entrou aqui');
+    const service = new characterService();
+    const getAll = await service.getAll();
+    if (!getAll || getAll.length === 0) {
+      return res.status(404).send({ message: 'Not Found' });
+    }
+    return res.status(200).send(getAll);
+  } catch (e) {
     return res.status(404).send({ message: 'Not Found' });
   }
-  return res.status(200).send(getAll);
 };
 
 export const getById = async (req, res) => {

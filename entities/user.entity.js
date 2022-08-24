@@ -15,7 +15,6 @@ export class UserEntity {
       const idUser = random.substring(0, 7);
       const getId = await getById(idUser);
       if (!getId) {
-        console.log(idUser);
         this.id = idUser;
         return idUser;
       }
