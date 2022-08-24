@@ -4,58 +4,56 @@ import { CharacterEntity } from '../entities/character.entity.js';
 export const getAll = async (req, res) => {
   const service = new characterService();
   const getAll = await service.getAll();
-  if (!getAll || getAll.length === 0){
-    res.status(404).send({message: 'Nenhum personagem foi encontrado'});
-    return {message: 'Nenhum personagem foi encontrado'};
-  } 
-  res.status(200).send(getAll)
-  return getAll;
+  if (!getAll || getAll.length === 0) {
+    return res.status(404).send({ message: 'Not Found' });
+  }
+  return res.status(200).send(getAll);
 };
 
 export const getById = async (req, res) => {
   const service = new characterService();
   const getById = await service.getById(req.params.id);
-  if (!getById || getById.length === 0){
-    res.status(404).send({message: 'Nenhum personagem foi encontrado com o ID'});
-    return {message: 'Nenhum personagem foi encontrado com o ID'};
+  if (!getById) {
+    return res.status(404).send({ message: 'Not Found' });
   }
-  res.status(200).send(getById);
-  return getById;
+  return res.status(200).send(getById);
 };
 
-export const getName= async (req, res) => {
+export const getName = async (req, res) => {
   const service = new characterService();
   const getName = await service.getName(req.query.name);
-  if (!getName || getName.length === 0){
-    res.status(404).send({message: 'Nenhum personagem foi encontrado com o name'});
-    return {message: 'Nenhum personagem foi encontrado com o name'};
+  if (!getName || getName.length === 0) {
+    return res.status(404).send({ message: 'Not Found' });
   }
-  res.status(200).send(getName);
-  return getName;
+  return res.status(200).send(getName);
 };
 
-export const create= async (req, res) => {
+export const create = async (req, res) => {
   const service = new characterService();
   const characterEntity = new CharacterEntity(req.body);
   await characterEntity.createId(service.getById);
   const newCharacter = characterEntity.printCharacter();
   const character = await service.create(newCharacter);
-  if(!character){
-    res.status(404).send({message: 'Personagem não foi criado'})
-    return {message: 'Personagem não foi criado'};
+  if (!character) {
+    return res.status(400).send({ message: 'Bad Request' });
   }
-  res.status(202).send(character);
-  return character;
+  return res.status(201).send(character);
 };
 
-export const update= async (id, character) => {
+export const update = async (req, res) => {
   const service = new characterService();
-  const updateCharacter = await service.update(id, character);
-  if (!updateCharacter) return 'Nenhum personagem foi encontrado com o ID';
-  return updateCharacter;
-}
+  const updateCharacter = await service.update(req.params.id, req.body);
+  if (!updateCharacter) {
+    return res.status(400).send({ message: 'Bad Request' });
+  }
+  return res.status(200).send(updateCharacter);
+};
 
-export const deleteCharacter=(id) => {
+export const deleteCharacter=(req, res) => {
   const service = new characterService();
-  return await service.delete(id);
+  const characterDeleted =  await service.delete(req.params.id);
+  if(!characterDeleted) {
+    return res.status(400).send({message: 'Bad request'});
+  }
+  return res.status(200).send({message: 'Character deleted successfully'})
 }
