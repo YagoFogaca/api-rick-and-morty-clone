@@ -5,7 +5,6 @@ import routerUser from './routes/user.route.js';
 import { connectDatabase } from './database/connection.js';
 
 config();
-// const {cors} =
 const port = process.env.PORT || 3001;
 const app = express();
 
