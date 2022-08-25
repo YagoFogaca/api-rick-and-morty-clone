@@ -3,7 +3,7 @@ import { randomUUID } from 'node:crypto';
 export class CharacterEntity {
   constructor(character, user) {
     this.id;
-    this.user = user.user ?? '';
+    this.user = user === undefined ? '' : user.user;
     this.name = character.name;
     this.imageUrl = character.imageUrl;
   }

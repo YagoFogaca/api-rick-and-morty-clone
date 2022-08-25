@@ -1,12 +1,231 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "API El Geladon",
-    "description": "API para CRUD de paletas mexicanas e carrinho de compras",
+    "title": "API Rick and Morty Clone",
+    "description": "API Clone para CRUD dos personagens do desenho Rick and Morty",
     "termsOfService": "",
     "contact": {
-      "email": "tlima@blueedtech.com.br"
+      "email": "yagofogaca20@gmail.com"
     },
     "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3001",
+      "description": "API Local"
+    },
+    {
+      "url": "https://api-rick-and-morty-clone.herokuapp.com",
+      "description": "API Heroku"
+    }
+  ],
+  "paths": {
+    "/users/": {
+      "get": {
+        "sumary": "Lista de todos os usuarios",
+        "description": "Rota responsavel por retornar todos os usuarios cadastrados",
+        "tags": ["Users"],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Users"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/create": {
+      "post": {
+        "sumary": "Criar um novo usuario",
+        "description": "Rota responsavel por criar um novo usuario",
+        "tags": ["Users"],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Users"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/characters": {
+      "get": {
+        "sumary": "Buscar todos os personagens",
+        "description": "Rota responsavel por buscar todos os personagens",
+        "tags": ["Character"],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Character"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/characters/find/{id}": {
+      "get": {
+        "sumary": "Buscar um personagem por id",
+        "description": "Rota responsavel por buscar um personagem por ID",
+        "tags": ["Character"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do personagem para a busca",
+            "required": true
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#/components/schemas/Character"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/characters/search": {
+      "get": {
+        "sumary": "Buscar um personagem por nome",
+        "description": "Rota responsavel por buscar um personagem por nome",
+        "tags": ["Character"],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Name do personagem para a busca",
+            "required": true
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#/components/schemas/Character"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/characters/update/{id{": {
+      "put": {
+        "sumary": "Editar um personagem pelo ID",
+        "description": "Rota responsavel por editar um personagem por id",
+        "tags": ["Character"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do personagem para editar",
+            "required": true
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#/components/schemas/Character"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/characters/delete/{id{": {
+      "delete": {
+        "sumary": "Deletar um personagem pelo ID",
+        "description": "Rota responsavel por deletar um personagem por id",
+        "tags": ["Character"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do personagem para editar",
+            "required": true
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#/components/schemas/Character"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
