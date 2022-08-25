@@ -4,6 +4,7 @@ import routerUser from './routes/user.route.js';
 import { connectDatabase } from './database/connection.js';
 import routerCharacter from './routes/character.route.js';
 import routerDocs from './routes/swagger.route.js';
+import { config } from 'dotenv';
 
 config();
 const port = process.env.PORT || 3001;
