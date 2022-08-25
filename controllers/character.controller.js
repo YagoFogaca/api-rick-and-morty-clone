@@ -30,7 +30,7 @@ export const getByName = async (req, res) => {
 
 export const create = async (req, res) => {
   const service = new characterService();
-  const characterEntity = new CharacterEntity(req.body);
+  const characterEntity = new CharacterEntity(req.body, {});
   await characterEntity.createId(service.getById);
   const newCharacter = characterEntity.printCharacter();
   const character = await service.create(newCharacter);
