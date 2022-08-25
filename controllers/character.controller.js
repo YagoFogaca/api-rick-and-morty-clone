@@ -2,7 +2,6 @@ import { characterService } from '../services/character.service.js';
 import { CharacterEntity } from '../entities/character.entity.js';
 
 export const getAll = async (req, res) => {
-  console.log('entrou aqui');
   const service = new characterService();
   const getAll = await service.getAll();
   if (!getAll || getAll.length === 0) {

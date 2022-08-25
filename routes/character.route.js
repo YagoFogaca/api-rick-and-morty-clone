@@ -10,11 +10,11 @@ import { Router } from 'express';
 
 const routerCharacter = Router();
 
-routerCharacter.get('characters', getAll);
-routerCharacter.get('characters/find/:id', getById);
-routerCharacter.get('characters/search', getByName);
-routerCharacter.post('characters/create', create);
-routerCharacter.put('characters/update/:id', update);
-routerCharacter.delete('characters/delete/:id', deleteCharacter);
+routerCharacter.get('', getAll);
+routerCharacter.get('/find/:id', getById);
+routerCharacter.get('/search', getByName);
+routerCharacter.post('/create', create);
+routerCharacter.put('/update/:id', update);
+routerCharacter.delete('/delete/:id', deleteCharacter);
 
 export default routerCharacter;

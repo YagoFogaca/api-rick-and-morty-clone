@@ -15,7 +15,7 @@ connectDatabase();
 app.use(cors());
 app.use(express.json());
 app.use('/users', routerUser);
-app.use('/', routerCharacter);
+app.use('/characters', routerCharacter);
 app.use('/api', routerDocs);
 
 app.listen(port, () => {
