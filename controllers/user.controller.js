@@ -11,12 +11,17 @@ export const getAll = async (req, res) => {
 };
 
 export const create = async (req, res) => {
-  const service = new userService();
-  const userEntity = new UserEntity(req.body);
-  await userEntity.createId(service.getById);
-  const createdUser = await service.create(userEntity.printUSer());
-  if (!createdUser) {
-    return res.status(400).send({ message: 'Bad Request' });
+  try {
+    const service = new userService();
+    const userEntity = new UserEntity(req.body);
+    await userEntity.createId(service.getById);
+    const createdUser = await service.create(userEntity.printUSer());
+    if (!createdUser) {
+      return res.status(400).send({ message: 'Bad Request' });
+    }
+    return res.status(201).send({ message: 'Created' });
+  } catch (err) {
+    console.log(err);
+    res.status(400).send({ message: 'Bad Request' });
   }
-  return res.status(201).send({ message: 'Created' });
 };
