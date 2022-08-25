@@ -10,6 +10,20 @@ export const getAll = async (req, res) => {
   return res.status(200).send(getAll);
 };
 
+export const getByEmail = async (req, res) => {
+  const service = new userService();
+  const getByEmail = await service.getByEmail(req.body);
+  if (!getByEmail) {
+    return res.status(400).send({ message: 'Login failed' });
+  }
+
+  if (req.body.password != getByEmail.password) {
+    return res.status(400).send({ message: 'Login failed' });
+  }
+
+  return res.status(200).send({ message: 'Login successful' });
+};
+
 export const create = async (req, res) => {
   try {
     const service = new userService();

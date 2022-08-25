@@ -4,6 +4,7 @@ import routerUser from './routes/user.route.js';
 import { connectDatabase } from './database/connection.js';
 import routerCharacter from './routes/character.route.js';
 import routerDocs from './routes/swagger.route.js';
+import routerAuth from './routes/auth.route.js';
 import { config } from 'dotenv';
 
 config();
@@ -15,6 +16,7 @@ connectDatabase();
 app.use(cors());
 app.use(express.json());
 app.use('/users', routerUser);
+app.use('/auth', routerAuth);
 app.use('/characters', routerCharacter);
 app.use('/api', routerDocs);
 
