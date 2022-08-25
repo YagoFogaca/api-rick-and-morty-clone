@@ -22,7 +22,7 @@
   "paths": {
     "/users/": {
       "get": {
-        "sumary": "Lista de todos os usuarios",
+        "summary": "Lista de todos os usuarios",
         "description": "Rota responsavel por retornar todos os usuarios cadastrados",
         "tags": ["Users"],
         "responses": {
@@ -47,9 +47,31 @@
     },
     "/users/create": {
       "post": {
-        "sumary": "Criar um novo usuario",
+        "summary": "Criar um novo usuario",
         "description": "Rota responsavel por criar um novo usuario",
         "tags": ["Users"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "examples": {
+                "User": {
+                  "value": [
+                    {
+                      "name": "Blue",
+                      "username": "blue_edtch",
+                      "email": "blueedtch@gmail.com",
+                      "password": "12345",
+                      "photo": "https://th.bing.com/th/id/R.80302906ea0ebf6b296f0b152227c81d?rik=7lkhQ%2bxlu6H1RA&pid=ImgRaw&r=0&sres=1&sresct=1"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "404": {
             "description": "Not Found"
@@ -70,9 +92,34 @@
         }
       }
     },
+    "/auth/login": {
+      "post": {
+        "summary": "Fazer login",
+        "description": "Rota responsavel por realizar o login na API",
+        "tags": ["Auth"],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/characters": {
       "get": {
-        "sumary": "Buscar todos os personagens",
+        "summary": "Buscar todos os personagens",
         "description": "Rota responsavel por buscar todos os personagens",
         "tags": ["Character"],
         "responses": {
@@ -95,9 +142,54 @@
         }
       }
     },
+    "/characters/create": {
+      "post": {
+        "summary": "Criar um novo personagem",
+        "description": "Rota responsavel por criar um novo personagem",
+        "tags": ["Users"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Character"
+              },
+              "examples": {
+                "Character": {
+                  "value": [
+                    {
+                      "user": "",
+                      "name": "blueedtch",
+                      "imageUrl": "https://th.bing.com/th/id/R.80302906ea0ebf6b296f0b152227c81d?rik=7lkhQ%2bxlu6H1RA&pid=ImgRaw&r=0&sres=1&sresct=1"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/characters/find/{id}": {
       "get": {
-        "sumary": "Buscar um personagem por id",
+        "summary": "Buscar um personagem por id",
         "description": "Rota responsavel por buscar um personagem por ID",
         "tags": ["Character"],
         "parameters": [
@@ -130,7 +222,7 @@
     },
     "/characters/search": {
       "get": {
-        "sumary": "Buscar um personagem por nome",
+        "summary": "Buscar um personagem por nome",
         "description": "Rota responsavel por buscar um personagem por nome",
         "tags": ["Character"],
         "parameters": [
@@ -163,7 +255,7 @@
     },
     "/characters/update/{id{": {
       "put": {
-        "sumary": "Editar um personagem pelo ID",
+        "summary": "Editar um personagem pelo ID",
         "description": "Rota responsavel por editar um personagem por id",
         "tags": ["Character"],
         "parameters": [
@@ -196,7 +288,7 @@
     },
     "/characters/delete/{id{": {
       "delete": {
-        "sumary": "Deletar um personagem pelo ID",
+        "summary": "Deletar um personagem pelo ID",
         "description": "Rota responsavel por deletar um personagem por id",
         "tags": ["Character"],
         "parameters": [
