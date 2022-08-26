@@ -1,4 +1,4 @@
-import { getAll, create, getByEmail } from '../controllers/user.controller.js';
+import { getAll, create } from '../controllers/user.controller.js';
 
 import { Router } from 'express';
 
@@ -9,5 +9,3 @@ routerUser.get('/', getAll);
 routerUser.post('/create', create);
 
 export default routerUser;
-
-// https://api-rick-and-morty-clone.herokuapp.com/users/create
