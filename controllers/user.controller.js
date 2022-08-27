@@ -27,7 +27,6 @@ export const getByEmail = async (req, res) => {
     return res.status(200).send({ message: 'Login successful' });
   } catch (err) {
     console.log(err.message);
-    console.log();
     res.status(err.status).send(err.message);
   }
 };
@@ -37,7 +36,6 @@ export const create = async (req, res) => {
     const service = new userService();
     const user = req.body;
     user.password = await bcryptjs.hash(user.password, 10);
-    console.log(user);
     const userEntity = new UserEntity(user);
     await userEntity.createId(service.getById);
     const createdUser = await service.create(userEntity.printUSer());
