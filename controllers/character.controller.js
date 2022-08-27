@@ -1,31 +1,42 @@
 import { characterService } from '../services/character.service.js';
 import { CharacterEntity } from '../entities/character.entity.js';
+import { errors } from './errors/erroController.js';
 
 export const getAll = async (req, res) => {
-  const service = new characterService();
-  const getAll = await service.getAll();
-  if (!getAll || getAll.length === 0) {
-    return res.status(404).send({ message: 'Not Found' });
+  try {
+    const service = new characterService();
+    const getAll = await service.getAll();
+    errors(getAll);
+    return res.status(200).send(getAll);
+  } catch (err) {
+    console.log(err);
+    console.log(err.message);
+    res.status(err.status).send(err.message);
   }
-  return res.status(200).send(getAll);
 };
 
 export const getById = async (req, res) => {
-  const service = new characterService();
-  const getById = await service.getById(req.params.id);
-  if (!getById) {
-    return res.status(404).send({ message: 'Not Found' });
+  try {
+    const service = new characterService();
+    const getById = await service.getById(req.params.id);
+    errors(getById);
+    return res.status(200).send(getById);
+  } catch (err) {
+    console.log(err.message);
+    res.status(err.status).send(err.message);
   }
-  return res.status(200).send(getById);
 };
 
 export const getByName = async (req, res) => {
-  const service = new characterService();
-  const getName = await service.getName(req.query.name);
-  if (!getName || getName.length === 0) {
-    return res.status(404).send({ message: 'Not Found' });
+  try {
+    const service = new characterService();
+    const getName = await service.getName(req.query.name);
+    errors(getName);
+    return res.status(200).send(getName);
+  } catch (err) {
+    console.log(err.message);
+    res.status(err.status).send(err.message);
   }
-  return res.status(200).send(getName);
 };
 
 export const create = async (req, res) => {
