@@ -9,7 +9,6 @@ export const getAll = async (req, res) => {
     errors(getAll);
     return res.status(200).send(getAll);
   } catch (err) {
-    console.log(err);
     console.log(err.message);
     res.status(err.status).send(err.message);
   }
@@ -40,31 +39,40 @@ export const getByName = async (req, res) => {
 };
 
 export const create = async (req, res) => {
-  const service = new characterService();
-  const characterEntity = new CharacterEntity(req.body);
-  await characterEntity.createId(service.getById);
-  const newCharacter = characterEntity.printCharacter();
-  const character = await service.create(newCharacter);
-  if (!character) {
-    return res.status(400).send({ message: 'Bad Request' });
+  try {
+    const service = new characterService();
+    const characterEntity = new CharacterEntity(req.body);
+    await characterEntity.createId(service.getById);
+    const newCharacter = characterEntity.printCharacter();
+    const character = await service.create(newCharacter);
+    errors(character);
+    return res.status(201).send({ message: 'Created' });
+  } catch (err) {
+    console.log(err.message);
+    res.status(err.status).send(err.message);
   }
-  return res.status(201).send({ message: 'Created' });
 };
 
 export const update = async (req, res) => {
-  const service = new characterService();
-  const updateCharacter = await service.update(req.params.id, req.body);
-  if (!updateCharacter) {
-    return res.status(400).send({ message: 'Bad Request' });
+  try {
+    const service = new characterService();
+    const updateCharacter = await service.update(req.params.id, req.body);
+    errors(updateCharacter);
+    return res.status(200).send(updateCharacter);
+  } catch (err) {
+    console.log(err.message);
+    res.status(err.status).send(err.message);
   }
-  return res.status(200).send(updateCharacter);
 };
 
 export const deleteCharacter = async (req, res) => {
-  const service = new characterService();
-  const characterDeleted = await service.delete(req.params.id);
-  if (!characterDeleted) {
-    return res.status(400).send({ message: 'Bad request' });
+  try {
+    const service = new characterService();
+    const characterDeleted = await service.delete(req.params.id);
+    errors(characterDeleted);
+    return res.status(200).send({ message: 'Character deleted successfully' });
+  } catch (err) {
+    console.log(err.message);
+    res.status(err.status).send(err.message);
   }
-  return res.status(200).send({ message: 'Character deleted successfully' });
 };
