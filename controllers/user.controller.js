@@ -2,7 +2,6 @@ import { userService } from '../services/user.service.js';
 import { UserEntity } from '../entities/user.entity.js';
 import { errors } from './errors/erroController.js';
 import bcryptjs from 'bcryptjs';
-
 import jwt from 'jsonwebtoken';
 import { config } from 'dotenv';
 
@@ -35,7 +34,8 @@ export const getByEmail = async (req, res) => {
     return res.status(200).send({ token });
   } catch (err) {
     console.log(err.message);
-    res.status(err.status).send(err.message);
+    // res.status(err.status).send(err.message);
+    res.status(404).send(err.message);
   }
 };
 
@@ -48,7 +48,7 @@ export const create = async (req, res) => {
     await userEntity.createId(service.getById);
     const createdUser = await service.create(userEntity.printUSer());
     errors(createdUser);
-    return res.status(201).send(createdUser);
+    return res.status(201).send({ message: 'User created successfully' });
   } catch (err) {
     console.log(err.message);
     res.status(err.status).send(err.message);
