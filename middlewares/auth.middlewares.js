@@ -1,4 +1,4 @@
-class Login {
+class auth {
   constructor(user) {
     this.email = user.email;
     this.password = user.password;
@@ -15,7 +15,7 @@ class Login {
 
 export const loginUser = (req, res, next) => {
   try {
-    const user = new Login(req.body);
+    const user = new auth(req.body);
     user.validate();
 
     next();
