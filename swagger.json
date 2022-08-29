@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "API Rick and Morty Clone",
-    "description": "API Clone para CRUD dos personagens do desenho Rick and Morty",
+    "description": "API Clone para CRUD dos personagens do Rick and Morty",
     "termsOfService": "",
     "contact": {
       "email": "yagofogaca20@gmail.com"
@@ -25,7 +25,15 @@
         "summary": "Lista de todos os usuarios",
         "description": "Rota responsavel por retornar todos os usuarios cadastrados",
         "tags": ["Users"],
+        "security": [
+          {
+            "token": []
+          }
+        ],
         "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -73,8 +81,8 @@
           }
         },
         "responses": {
-          "404": {
-            "description": "Not Found"
+          "400": {
+            "description": "Bad Request"
           },
           "201": {
             "description": "OK",
@@ -94,7 +102,7 @@
     },
     "/auth/login": {
       "post": {
-        "summary": "Fazer login",
+        "summary": "Fazer login na API",
         "description": "Rota responsavel por realizar o login na API",
         "tags": ["Auth"],
         "responses": {
@@ -147,6 +155,11 @@
         "summary": "Criar um novo personagem",
         "description": "Rota responsavel por criar um novo personagem",
         "tags": ["Character"],
+        "security": [
+          {
+            "token": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -168,8 +181,11 @@
           }
         },
         "responses": {
-          "404": {
-            "description": "Not Found"
+          "401": {
+            "description": "Unauthorized"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "201": {
             "description": "OK",
@@ -192,6 +208,11 @@
         "summary": "Buscar um personagem por id",
         "description": "Rota responsavel por buscar um personagem por ID",
         "tags": ["Character"],
+        "security": [
+          {
+            "token": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -201,6 +222,9 @@
           }
         ],
         "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -225,6 +249,11 @@
         "summary": "Buscar um personagem por nome",
         "description": "Rota responsavel por buscar um personagem por nome",
         "tags": ["Character"],
+        "security": [
+          {
+            "token": []
+          }
+        ],
         "parameters": [
           {
             "name": "name",
@@ -234,8 +263,11 @@
           }
         ],
         "responses": {
-          "404": {
-            "description": "Not Found"
+          "401": {
+            "description": "Unauthorized"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "200": {
             "description": "OK",
@@ -258,6 +290,11 @@
         "summary": "Editar um personagem pelo ID",
         "description": "Rota responsavel por editar um personagem por id",
         "tags": ["Character"],
+        "security": [
+          {
+            "token": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -267,8 +304,11 @@
           }
         ],
         "responses": {
-          "404": {
-            "description": "Not Found"
+          "401": {
+            "description": "Unauthorized"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "200": {
             "description": "OK",
@@ -291,6 +331,11 @@
         "summary": "Deletar um personagem pelo ID",
         "description": "Rota responsavel por deletar um personagem por id",
         "tags": ["Character"],
+        "security": [
+          {
+            "token": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -300,6 +345,9 @@
           }
         ],
         "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -355,7 +403,17 @@
             "type": "string"
           }
         }
+      },
+      "securitySchemes": {
+        "token": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT"
+        }
       }
+    },
+    "security": {
+      "token": []
     }
   }
 }
