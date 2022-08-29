@@ -34,7 +34,6 @@ export const getByEmail = async (req, res) => {
     });
     return res.status(200).send({ token });
   } catch (err) {
-    console.log(err);
     console.log(err.message);
     res.status(err.status).send(err.message);
   }
