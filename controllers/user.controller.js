@@ -14,7 +14,7 @@ export const getAll = async (req, res) => {
     errors(getAll);
     return res.status(200).send(getAll);
   } catch (err) {
-    console.log(err.message);
+    console.log(err);
     return res.status(404).send(err.message);
   }
 };
@@ -32,7 +32,7 @@ export const getByEmail = async (req, res) => {
     });
     return res.status(200).send({ token });
   } catch (err) {
-    console.log(err.message);
+    console.log(err);
     res.status(404).send(err.message);
   }
 };
@@ -48,7 +48,7 @@ export const create = async (req, res) => {
     errors(createdUser);
     return res.status(201).send({ message: 'User created successfully' });
   } catch (err) {
-    console.log(err.message);
+    console.log(err);
     res.status(400).send(err.message);
   }
 };
