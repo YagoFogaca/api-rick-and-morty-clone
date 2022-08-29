@@ -419,9 +419,9 @@
           "bearerFormat": "JWT"
         }
       }
-    },
-    "security": {
-      "token": []
     }
+  },
+  "security": {
+    "token": []
   }
 }
