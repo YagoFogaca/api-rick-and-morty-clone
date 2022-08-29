@@ -10,7 +10,7 @@ export const getAll = async (req, res) => {
     return res.status(200).send(getAll);
   } catch (err) {
     console.log(err.message);
-    res.status(err.status).send(err.message);
+    res.status(404).send(err.message);
   }
 };
 
@@ -22,7 +22,7 @@ export const getById = async (req, res) => {
     return res.status(200).send(getById);
   } catch (err) {
     console.log(err.message);
-    res.status(err.status).send(err.message);
+    res.status(404).send(err.message);
   }
 };
 
@@ -34,7 +34,7 @@ export const getByName = async (req, res) => {
     return res.status(200).send(getName);
   } catch (err) {
     console.log(err.message);
-    res.status(err.status).send(err.message);
+    res.status(404).send(err.message);
   }
 };
 
@@ -49,7 +49,7 @@ export const create = async (req, res) => {
     return res.status(201).send({ message: 'Created' });
   } catch (err) {
     console.log(err.message);
-    res.status(err.status).send(err.message);
+    res.status(401).send(err.message);
   }
 };
 
@@ -61,7 +61,7 @@ export const update = async (req, res) => {
     return res.status(200).send(updateCharacter);
   } catch (err) {
     console.log(err.message);
-    res.status(err.status).send(err.message);
+    res.status(400).send(err.message);
   }
 };
 
@@ -73,6 +73,6 @@ export const deleteCharacter = async (req, res) => {
     return res.status(200).send({ message: 'Character deleted successfully' });
   } catch (err) {
     console.log(err.message);
-    res.status(err.status).send(err.message);
+    res.status(400).send(err.message);
   }
 };
