@@ -5,7 +5,7 @@
 // password:
 // photo:
 
-class User {
+class UserCreate {
   constructor(user) {
     this.name = user.name;
     this.username = user.username;
@@ -34,7 +34,7 @@ class User {
 
 export const UserMiddlewares = (req, res, next) => {
   try {
-    const user = new User(req.body);
+    const user = new UserCreate(req.body);
     user.validate();
 
     next();
