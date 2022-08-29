@@ -3,6 +3,11 @@ import { UserEntity } from '../entities/user.entity.js';
 import { errors } from './errors/erroController.js';
 import bcryptjs from 'bcryptjs';
 
+import jwt from 'jsonwebtoken';
+import { config } from 'dotenv';
+
+config();
+
 export const getAll = async (req, res) => {
   try {
     const service = new userService();
@@ -24,8 +29,12 @@ export const getByEmail = async (req, res) => {
     errors(getByEmail);
     const verify = await bcryptjs.compare(user.password, getByEmail.password);
     errors(verify);
-    return res.status(200).send({ message: 'Login successful' });
+    const token = jwt.sign({ getByEmail }, process.env.SECRET, {
+      expiresIn: '12h',
+    });
+    return res.status(200).send({ token });
   } catch (err) {
+    console.log(err);
     console.log(err.message);
     res.status(err.status).send(err.message);
   }
