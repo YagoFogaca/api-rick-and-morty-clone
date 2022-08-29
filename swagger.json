@@ -130,7 +130,15 @@
         "summary": "Buscar todos os personagens",
         "description": "Rota responsavel por buscar todos os personagens",
         "tags": ["Character"],
+        "security": [
+          {
+            "token": []
+          }
+        ],
         "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
