@@ -6,7 +6,7 @@ config();
 class Token {
   validateToken(token) {
     if (!token) {
-      throw new Error('Invalid token');
+      throw new Error('Token was not provided');
     }
   }
   validate(token) {
@@ -18,9 +18,9 @@ export const token = (req, res, next) => {
   try {
     const tokenValidate = new Token();
     const tokenReq = req.headers.authorization;
+    tokenValidate.validateToken(tokenReq);
     const parts = tokenReq.split(' ');
     const [scheme, token] = parts;
-    tokenValidate.validateToken(token);
     const validateToken = tokenValidate.validate(token);
 
     next();
