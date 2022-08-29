@@ -1,4 +1,4 @@
-class UserCreate {
+class User {
   constructor(user) {
     this.name = user.name;
     this.username = user.username;
@@ -8,26 +8,26 @@ class UserCreate {
   }
   validate() {
     if (!this.name) {
-      throw new Error('Name not found');
+      throw new Error('Name was not provided');
     }
     if (!this.username) {
-      throw new Error('Username not found');
+      throw new Error('Username was not provided');
     }
     if (!this.email) {
-      throw new Error('Email not found');
+      throw new Error('Email was not provided');
     }
     if (!this.password) {
-      throw new Error('Password not found');
+      throw new Error('Password was not provided');
     }
     if (!this.photo) {
-      throw new Error('Photo not found');
+      throw new Error('Photo was not provided');
     }
   }
 }
 
 export const UserMiddlewares = (req, res, next) => {
   try {
-    const user = new UserCreate(req.body);
+    const user = new User(req.body);
     user.validate();
 
     next();

@@ -1,16 +1,16 @@
 class Character {
   validateCharacter(character) {
     if (!character.name) {
-      throw new Error('Name not found');
+      throw new Error('Name was not provided');
     }
     if (!character.imageUrl) {
-      throw new Error('Image not found');
+      throw new Error('Image was not provided');
     }
   }
 
   validateName(name) {
     if (!name) {
-      throw new Error('Name not found');
+      throw new Error('Name was not provided');
     }
   }
 }
