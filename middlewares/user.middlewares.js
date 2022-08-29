@@ -1,10 +1,3 @@
-// Verificar a criação de um novo usuario, portanto, devemos verificar se todos os campos existem:
-// name:
-// username:
-// email:
-// password:
-// photo:
-
 class UserCreate {
   constructor(user) {
     this.name = user.name;

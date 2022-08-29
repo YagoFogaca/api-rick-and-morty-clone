@@ -1,7 +1,6 @@
 import { newError } from './newError.js';
 
 export function errors(data) {
-  console.log(data);
   if (!data) {
     throw new newError({ status: 404, message: 'Not Found' });
   }
