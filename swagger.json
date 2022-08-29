@@ -411,13 +411,13 @@
             "type": "string"
           }
         }
-      },
-      "securitySchemes": {
-        "token": {
-          "type": "http",
-          "scheme": "bearer",
-          "bearerFormat": "JWT"
-        }
+      }
+    },
+    "securitySchemes": {
+      "token": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   },
