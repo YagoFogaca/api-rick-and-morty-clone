@@ -23,7 +23,6 @@ o front-end, usando o padrão de desenvolvimento chamado BFF (Back-end For Front
 
 <p>Não funcionais:</p>
 
-    Usuario:
     Persistência de dados no MongoDB Atlas;
     Formatação do código utilizando o Prettier;
     Documentação Swagger;
