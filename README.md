@@ -3,8 +3,10 @@
 Uma breve descrição sobre o que esse projeto faz e para quem ele é
 
 O projeto API clone Rick and Morty é do modulo 3 - (Back-end) da BlueEdtch. Ele visa suprir
-o front-end, que está desponivel nesse link - < Subir o projeto e colocar o link aqui>, que
-contem os seguintes requisitos funcionais:
+o front-end, usando o padrão de desenvolvimento chamado BFF (Back-end For Front-end).
+
+<p>O front-end contem os seguintes requisitos:</p>
+<p>Funcionais:</p>
 
     Usuario:
      Criar um novo usuario
@@ -18,6 +20,16 @@ contem os seguintes requisitos funcionais:
      Editar um personagem pelo seu id
      Adicionar um novo personagem
      Exluir um personagem pelo seu id
+
+<p>Não funcionais:</p>
+
+    Usuario:
+    Persistência de dados no MongoDB Atlas;
+    Formatação do código utilizando o Prettier;
+    Documentação Swagger;
+    Status Code corretos em todos os endpoints;
+    Deploy no Heroku;
+    Autenticacao JWT.
 
 ## Documentação da API
 
