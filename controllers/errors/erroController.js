@@ -11,3 +11,11 @@ export function errors(data) {
     throw new Error('No content');
   }
 }
+
+export function verifyEmail(user) {
+  if (user.gmail) {
+    return user;
+  }
+
+  throw new Error('Email already registered');
+}

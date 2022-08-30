@@ -1,12 +1,13 @@
 import { userService } from '../services/user.service.js';
 import { UserEntity } from '../entities/user.entity.js';
-import { errors } from './errors/erroController.js';
+import { errors, verifyEmail } from './errors/erroController.js';
 import bcryptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { config } from 'dotenv';
 
 config();
 
+// Buscar todos
 export const getAll = async (req, res) => {
   try {
     const service = new userService();
@@ -19,6 +20,7 @@ export const getAll = async (req, res) => {
   }
 };
 
+// Login
 export const getByEmail = async (req, res) => {
   try {
     const service = new userService();
@@ -37,15 +39,25 @@ export const getByEmail = async (req, res) => {
   }
 };
 
+// Criar um novo usuario
 export const create = async (req, res) => {
   try {
     const service = new userService();
+
     const user = req.body;
+
+    const getByEmail = await service.getByEmail(user);
+
+    verifyEmail(getByEmail);
+
     user.password = await bcryptjs.hash(user.password, 10);
+
     const userEntity = new UserEntity(user);
     await userEntity.createId(service.getById);
+
     const createdUser = await service.create(userEntity.printUSer());
     errors(createdUser);
+
     return res.status(201).send({ message: 'User created successfully' });
   } catch (err) {
     console.log(err);
