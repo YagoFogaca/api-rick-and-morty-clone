@@ -1,13 +1,13 @@
 export function errors(data) {
   if (!data) {
-    throw new Error({ message: 'Not Found' });
+    throw new Error('Not Found');
   }
 
   if (data === false) {
-    throw new Error({ message: 'Bad Request' });
+    throw new Error('Bad Request');
   }
 
   if (data.length === 0) {
-    throw new Error({ message: 'No content' });
+    throw new Error('No content');
   }
 }
