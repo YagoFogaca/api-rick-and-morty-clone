@@ -13,7 +13,7 @@ export function errors(data) {
 }
 
 export function verifyEmail(user) {
-  if (user.gmail) {
+  if (user.email) {
     return user;
   }
 
