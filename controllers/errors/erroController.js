@@ -13,10 +13,18 @@ export function errors(data) {
 }
 
 export function verifyEmail(user) {
-  console.log(user);
-  if (!user.email) {
+  if (!user) {
     return user;
   }
 
   throw new Error('Email already registered');
 }
+
+// Login
+// {
+//   "name": "YagoFogaca",
+//   "username": "yagofogaca",
+//   "email": "yagofogaca20@gmail.com",
+//   "password": "12345",
+//   "photo": "https://avatars.githubusercontent.com/u/99728003?v=4"
+// }
