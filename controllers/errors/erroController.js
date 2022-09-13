@@ -14,7 +14,7 @@ export function errors(data) {
 
 export function verifyEmail(user) {
   console.log(user);
-  if (user.email) {
+  if (!user.email) {
     return user;
   }
 
